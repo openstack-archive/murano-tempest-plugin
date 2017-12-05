@@ -35,8 +35,8 @@ class TestMuranoDeployment(base.BaseApplicationCatalogScenarioTest):
             raise cls.skipException(msg)
         super(TestMuranoDeployment, cls).resource_setup()
 
-        cls.abs_archive_path = [None]*3
-        cls.packages = [None]*3
+        cls.abs_archive_path = [None] * 3
+        cls.packages = [None] * 3
 
         application_name = utils.generate_name('Apache')
         cls.abs_archive_path[0], dir_with_archive, archive_name = \
