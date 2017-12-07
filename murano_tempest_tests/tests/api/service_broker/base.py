@@ -46,9 +46,9 @@ class BaseServiceBrokerTest(test.BaseTestCase):
     def setup_clients(cls):
         super(BaseServiceBrokerTest, cls).setup_clients()
         if not hasattr(cls, "os_primary"):
-            cls.username = CONF.identity.username
-            cls.password = CONF.identity.password
-            cls.tenant_name = CONF.identity.tenant_name
+            cls.username = cls.os_primary.credentials.username
+            cls.password = cls.os_primary.credentials.password
+            cls.tenant_name = cls.os_primary.credentials.tenant_name
             cls.verify_nonempty(cls.username, cls.password, cls.tenant_name)
             cls.os_primary = clients.Manager()
         cls.service_broker_client = cls.os_primary.service_broker_client
@@ -126,9 +126,9 @@ class BaseServiceBrokerAdminTest(BaseServiceBrokerTest):
     def setup_clients(cls):
         super(BaseServiceBrokerTest, cls).setup_clients()
         if not hasattr(cls, "os_admin"):
-            cls.username = CONF.identity.username
-            cls.password = CONF.identity.password
-            cls.tenant_name = CONF.identity.tenant_name
+            cls.username = CONF.auth.admin_username
+            cls.password = CONF.auth.admin_password
+            cls.tenant_name = CONF.auth.admin_project_name
             cls.verify_nonempty(cls.username, cls.password, cls.tenant_name)
             cls.os_admin = clients.Manager()
         cls.service_broker_client = cls.os_admin.service_broker_client
