@@ -408,8 +408,6 @@ class TestCinderVolumeIsolatedAdmin(
     @decorators.idempotent_id('4111eb94-2636-4d0b-af5c-776ed5a59b87')
     @testtools.testcase.attr('smoke')
     @testtools.testcase.attr('scenario')
-    @testtools.skip("This test is failed due to can not attach "
-                    "a readonly volume, when it fixed, unskip it.")
     def test_deploy_app_with_volume_creation_readonly(self):
         """Test app deploy with volume creation with readonly
 
