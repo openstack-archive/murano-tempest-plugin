@@ -2,6 +2,6 @@
     name: openstack/murano-tempest-plugin
     check:
       jobs:
-        - tempest-dsvm-murano-api:
+        - murano-tempest-api:
             voting: false
-        - tempest-dsvm-murano-cfapi
+        - murano-tempest-cfapi
