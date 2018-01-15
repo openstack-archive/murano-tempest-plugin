@@ -454,11 +454,6 @@ class TestCinderVolumeIsolatedAdmin(
     @decorators.idempotent_id('5c134343-11bc-4329-ac30-9b43f32c15e2')
     @testtools.testcase.attr('smoke')
     @testtools.testcase.attr('scenario')
-    @testtools.skip("This test is failed due to cinder new jsonschema"
-                    "validation for backup restore breaks the original"
-                    "process in commit"
-                    "Idd6c6be1c8bdf4dcf730f67e75a58a0329fe5259, when it"
-                    "fixed, unskip it.")
     def test_deploy_app_with_volume_creation_from_backup(self):
         """Test app deployment with volume creation from volume backup
 
