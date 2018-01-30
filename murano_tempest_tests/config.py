@@ -37,6 +37,9 @@ service_broker_group = cfg.OptGroup(name="service_broker",
 artifacts_group = cfg.OptGroup(name="artifacts",
                                title="Glance Artifacts Options")
 
+orchestration_group = cfg.OptGroup(name='orchestration',
+                                   title='Orchestration Service Options')
+
 ApplicationCatalogGroup = [
     # Application catalog tempest configuration
     cfg.StrOpt("region",
@@ -129,4 +132,29 @@ ArtifactsGroup = [
                default=500,
                help="Timeout in seconds to wait for a artifacts"
                     " to become available.")
+]
+
+OrchestrationGroup = [
+    cfg.StrOpt('catalog_type',
+               default='orchestration',
+               help="Catalog type of the Orchestration service."),
+    cfg.StrOpt('region',
+               default='',
+               help="The orchestration region name to use. If empty, the "
+                    "value of identity.region is used instead. If no such "
+                    "region is found in the service catalog, the first found "
+                    "one is used."),
+    cfg.StrOpt('endpoint_type',
+               default='publicURL',
+               choices=['public', 'admin', 'internal',
+                        'publicURL', 'adminURL', 'internalURL'],
+               help="The endpoint type to use for the orchestration service."),
+    cfg.StrOpt('stack_owner_role', default='heat_stack_owner',
+               help='Role required for users to be able to manage stacks'),
+    cfg.IntOpt('build_interval',
+               default=1,
+               help="Time in seconds between build status checks."),
+    cfg.IntOpt('build_timeout',
+               default=1200,
+               help="Timeout in seconds to wait for a stack to build.")
 ]

@@ -53,9 +53,26 @@ class BaseApplicationCatalogScenarioTest(test.BaseTestCase):
             cls.os_primary.application_catalog_client
         cls.artifacts_client = cls.os_primary.artifacts_client
         cls.servers_client = cls.services_manager.servers_client
-        # NOTE(andreaf) The orchestration client is not initialised in Tempest
-        # by default anymore.
-        params = config.service_client_config('orchestration')
+        params = {
+            'disable_ssl_certificate_validation':
+                CONF.identity.disable_ssl_certificate_validation,
+            'ca_certs': CONF.identity.ca_certificates_file,
+            'trace_requests': CONF.debug.trace_requests,
+            'http_timeout': CONF.service_clients.http_timeout,
+            'proxy_url': CONF.service_clients.proxy_url,
+            'build_timeout': CONF.orchestration.build_timeout,
+            'build_interval': CONF.orchestration.build_interval,
+            'endpoint_type': CONF.orchestration.endpoint_type,
+            'service': CONF.orchestration.catalog_type
+        }
+        options = getattr(CONF, 'orchestration')
+        # Set region
+        # If a service client does not define region or region is not set
+        # default to the identity region
+        if not hasattr(options, 'region') or not getattr(options, 'region'):
+            params['region'] = CONF.identity.region
+        else:
+            params['region'] = getattr(options, 'region')
         cls.orchestration_client = orchestration.OrchestrationClient(
             cls.services_manager.auth_provider, **params)
         cls.images_client = cls.services_manager.image_client_v2

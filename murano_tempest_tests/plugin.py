@@ -42,6 +42,9 @@ class MuranoTempestPlugin(plugins.TempestPlugin):
         config.register_opt_group(
             conf, config_application_catalog.artifacts_group,
             config_application_catalog.ArtifactsGroup)
+        config.register_opt_group(
+            conf, config_application_catalog.orchestration_group,
+            config_application_catalog.OrchestrationGroup)
 
     def get_opt_lists(self):
         return [(config_application_catalog.application_catalog_group.name,
@@ -51,4 +54,6 @@ class MuranoTempestPlugin(plugins.TempestPlugin):
                 (config.service_available_group.name,
                  config_application_catalog.service_option),
                 (config_application_catalog.artifacts_group.name,
-                 config_application_catalog.ArtifactsGroup)]
+                 config_application_catalog.ArtifactsGroup),
+                (config_application_catalog.orchestration_group.name,
+                 config_application_catalog.OrchestrationGroup)]
