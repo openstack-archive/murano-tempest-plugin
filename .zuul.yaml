@@ -1,5 +1,4 @@
 - project:
-    name: openstack/murano-tempest-plugin
     check:
       jobs:
         - murano-tempest-api:
