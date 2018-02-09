@@ -254,10 +254,7 @@ class ApplicationCatalogClient(rest_client.RestClient):
         uri = 'v1/environments/{0}/services'.format(environment_id)
         resp, body = self.put(uri, json.dumps(put_body), headers)
         self.expected_success(200, resp.status)
-        # TODO(freerunner): Need to replace json.loads() to _parse_resp
-        # method, when fix for https://bugs.launchpad.net/tempest/+bug/1539927
-        # will resolved and new version of tempest-lib released.
-        return json.loads(body)
+        return self._parse_resp(body)
 
     def delete_service(self, environment_id, session_id, service_id):
         headers = self.get_headers()
@@ -279,10 +276,7 @@ class ApplicationCatalogClient(rest_client.RestClient):
         uri = 'v1/environments/{0}/services'.format(environment_id)
         resp, body = self.get(uri, headers)
         self.expected_success(200, resp.status)
-        # TODO(freerunner): Need to replace json.loads() to _parse_resp
-        # method, when fix for https://bugs.launchpad.net/tempest/+bug/1539927
-        # will resolved and new version of tempest-lib released.
-        return json.loads(body)
+        return self._parse_resp(body)
 
     def get_service(self, environment_id, service_id, session_id=None):
         headers = self.get_headers()
@@ -383,10 +377,7 @@ class ApplicationCatalogClient(rest_client.RestClient):
         uri = 'v1/templates/{0}/services'.format(env_template_id)
         resp, body = self.get(uri)
         self.expected_success(200, resp.status)
-        # TODO(freerunner): Need to replace json.loads() to _parse_resp
-        # method, when fix for https://bugs.launchpad.net/tempest/+bug/1539927
-        # will resolved and new version of tempest-lib released.
-        return json.loads(body)
+        return self._parse_resp(body)
 
     def get_service_in_env_template(self, env_template_name, service_id):
         uri = 'v1/templates/{0}/services/{1}'.format(env_template_name,
