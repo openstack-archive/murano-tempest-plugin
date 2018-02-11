@@ -46,9 +46,10 @@ class ServiceBrokerClient(rest_client.RestClient):
         """
         uname = auth_provider.credentials.username
         pwd = auth_provider.credentials.password
+        auth = '{0}:{1}'.format(uname, pwd)
 
-        encoded_auth = base64.b64encode('{0}:{1}'.format(uname, pwd))
-        headers = {"Authorization": "Basic " + encoded_auth,
+        encoded_auth = base64.b64encode(auth.encode('utf-8'))
+        headers = {"Authorization": "Basic " + encoded_auth.decode('utf-8'),
                    'content-type': 'application/json'}
         return headers
 
