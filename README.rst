@@ -10,6 +10,7 @@ Note that this is a hard requirement.
 
 * Free software: Apache license
 * Documentation: http://docs.openstack.org/developer/murano-tempest-plugin
+* Release notes: https://docs.openstack.org/releasenotes/murano/
 * Source: http://git.openstack.org/cgit/openstack/murano-tempest-plugin
 * Bugs: http://bugs.launchpad.net/murano
 
