@@ -14,11 +14,11 @@
 
 import uuid
 
-from nose.plugins.attrib import attr as tag
-
 import murano_tempest_tests.tests.functional.common.utils as common_utils
 import murano_tempest_tests.tests.functional.integration.integration_base \
     as core
+
+from tempest.lib import decorators
 
 
 class MistralTest(core.MistralIntegration):
@@ -42,7 +42,7 @@ class MistralTest(core.MistralIntegration):
         with common_utils.ignored(Exception):
             cls.purge_uploaded_packages()
 
-    @tag('all', 'coverage')
+    @decorators.attr(type=['all', 'coverage'])
     def test_deploy_package_success(self):
         # Test expects successful deployment and one output: input_1_value.
 

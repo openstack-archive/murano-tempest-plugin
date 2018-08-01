@@ -13,11 +13,12 @@
 # under the License.
 
 import muranoclient.common.exceptions as murano_exceptions
-from nose.plugins.attrib import attr as tag
 
 import murano_tempest_tests.tests.functional.common.utils as common_utils
 import murano_tempest_tests.tests.functional.integration.integration_base \
     as core
+
+from tempest.lib import decorators
 
 
 class PolicyEnforcementTest(core.CongressIntegration):
@@ -40,7 +41,7 @@ class PolicyEnforcementTest(core.CongressIntegration):
         super(PolicyEnforcementTest, self).tearDown()
         self.purge_environments()
 
-    @tag('all', 'coverage')
+    @decorators.attr(type=['all', 'coverage'])
     def test_deploy_policy_fail_key(self):
         """Test expects failure due to empty key name.
 
@@ -55,7 +56,7 @@ class PolicyEnforcementTest(core.CongressIntegration):
                                   flavor='m1.small'),
             'missing key')
 
-    @tag('all', 'coverage')
+    @decorators.attr(type=['all', 'coverage'])
     def test_deploy_policy_fail_flavor(self):
         """Test expects failure due to blacklisted flavor
 
@@ -69,7 +70,7 @@ class PolicyEnforcementTest(core.CongressIntegration):
                                   key='test-key'),
             'bad flavor')
 
-    @tag('all', 'coverage')
+    @decorators.attr(type=['all', 'coverage'])
     def test_set_property_policy(self):
         """Tests environment modification by policy
 
