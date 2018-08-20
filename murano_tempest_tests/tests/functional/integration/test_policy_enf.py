@@ -42,6 +42,7 @@ class PolicyEnforcementTest(core.CongressIntegration):
         self.purge_environments()
 
     @decorators.attr(type=['all', 'coverage'])
+    @decorators.idempotent_id('4320a92b-6706-44a1-b053-7236e72ca0af')
     def test_deploy_policy_fail_key(self):
         """Test expects failure due to empty key name.
 
@@ -57,6 +58,7 @@ class PolicyEnforcementTest(core.CongressIntegration):
             'missing key')
 
     @decorators.attr(type=['all', 'coverage'])
+    @decorators.idempotent_id('4e058b1c-3857-4af0-8c6b-dc66f4cf85f2')
     def test_deploy_policy_fail_flavor(self):
         """Test expects failure due to blacklisted flavor
 
@@ -71,6 +73,7 @@ class PolicyEnforcementTest(core.CongressIntegration):
             'bad flavor')
 
     @decorators.attr(type=['all', 'coverage'])
+    @decorators.idempotent_id('e9eaec2e-e1a6-4a3a-9d77-19c67c35091b')
     def test_set_property_policy(self):
         """Tests environment modification by policy
 

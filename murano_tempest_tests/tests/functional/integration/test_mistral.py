@@ -43,6 +43,7 @@ class MistralTest(core.MistralIntegration):
             cls.purge_uploaded_packages()
 
     @decorators.attr(type=['all', 'coverage'])
+    @decorators.idempotent_id('699e03ba-4462-4381-aaa2-2291d8f15911')
     def test_deploy_package_success(self):
         # Test expects successful deployment and one output: input_1_value.
 
