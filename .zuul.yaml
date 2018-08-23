@@ -1,6 +1,11 @@
 - project:
+    templates:
+      - check-requirements
+      - tempest-plugin-jobs
     check:
       jobs:
         - murano-tempest-api:
             voting: false
         - murano-tempest-cfapi
+    gate:
+      queue: murano
