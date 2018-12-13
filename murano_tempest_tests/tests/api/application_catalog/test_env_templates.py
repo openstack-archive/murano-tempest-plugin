@@ -41,8 +41,8 @@ class TestEnvironmentTemplatesSanity(base.BaseApplicationCatalogTest):
         # Deleting dates from dictionaries to skip it in assert
         env_template.pop('updated', None)
         env_template.pop('created', None)
-        map(lambda x: x.pop('updated', None), env_templates_list)
-        map(lambda x: x.pop('created', None), env_templates_list)
+        list(map(lambda x: x.pop('updated', None), env_templates_list))
+        list(map(lambda x: x.pop('created', None), env_templates_list))
         self.assertIn(env_template, env_templates_list)
         self.application_catalog_client.\
             delete_env_template(env_template['id'])
@@ -170,12 +170,12 @@ class TestEnvironmentTemplates(base.BaseApplicationCatalogTest):
             get_public_env_templates_list()
 
         # Deleting dates from dictionaries to skip it in assert
-        map(lambda x: x.pop('updated', None),
-            public_env_templates + [public_env_template] +
-            [private_env_template] + [private_alt_env_template])
-        map(lambda x: x.pop('created', None),
-            public_env_templates + [public_env_template] +
-            [private_env_template] + [private_alt_env_template])
+        list(map(lambda x: x.pop('updated', None),
+             public_env_templates + [public_env_template] +
+             [private_env_template] + [private_alt_env_template]))
+        list(map(lambda x: x.pop('created', None),
+             public_env_templates + [public_env_template] +
+             [private_env_template] + [private_alt_env_template]))
 
         self.assertIn(public_env_template, public_env_templates)
         self.assertNotIn(private_env_template, public_env_templates)
@@ -185,8 +185,8 @@ class TestEnvironmentTemplates(base.BaseApplicationCatalogTest):
             get_private_env_templates_list()
 
         # Deleting dates from dictionaries to skip it in assert
-        map(lambda x: x.pop('updated', None), private_env_templates)
-        map(lambda x: x.pop('created', None), private_env_templates)
+        list(map(lambda x: x.pop('updated', None), private_env_templates))
+        list(map(lambda x: x.pop('created', None), private_env_templates))
 
         self.assertNotIn(public_env_template, private_env_templates)
         self.assertIn(private_env_template, private_env_templates)
@@ -196,8 +196,8 @@ class TestEnvironmentTemplates(base.BaseApplicationCatalogTest):
             get_env_templates_list()
 
         # Deleting dates from dictionaries to skip it in assert
-        map(lambda x: x.pop('updated', None), env_templates)
-        map(lambda x: x.pop('created', None), env_templates)
+        list(map(lambda x: x.pop('updated', None), env_templates))
+        list(map(lambda x: x.pop('created', None), env_templates))
 
         self.assertIn(public_env_template, env_templates)
         self.assertIn(private_env_template, env_templates)
@@ -206,8 +206,8 @@ class TestEnvironmentTemplates(base.BaseApplicationCatalogTest):
         alt_pub_templates = self.alt_client.get_public_env_templates_list()
 
         # Deleting dates from dictionaries to skip it in assert
-        map(lambda x: x.pop('updated', None), alt_pub_templates)
-        map(lambda x: x.pop('created', None), alt_pub_templates)
+        list(map(lambda x: x.pop('updated', None), alt_pub_templates))
+        list(map(lambda x: x.pop('created', None), alt_pub_templates))
 
         self.assertIn(public_env_template, alt_pub_templates)
         self.assertNotIn(private_env_template, alt_pub_templates)
@@ -216,8 +216,8 @@ class TestEnvironmentTemplates(base.BaseApplicationCatalogTest):
         alt_priv_templates = self.alt_client.get_private_env_templates_list()
 
         # Deleting dates from dictionaries to skip it in assert
-        map(lambda x: x.pop('updated', None), alt_priv_templates)
-        map(lambda x: x.pop('created', None), alt_priv_templates)
+        list(map(lambda x: x.pop('updated', None), alt_priv_templates))
+        list(map(lambda x: x.pop('created', None), alt_priv_templates))
 
         self.assertNotIn(public_env_template, alt_priv_templates)
         self.assertNotIn(private_env_template, alt_priv_templates)
@@ -226,8 +226,8 @@ class TestEnvironmentTemplates(base.BaseApplicationCatalogTest):
         alt_env_templates = self.alt_client.get_env_templates_list()
 
         # Deleting dates from dictionaries to skip it in assert
-        map(lambda x: x.pop('updated', None), alt_env_templates)
-        map(lambda x: x.pop('created', None), alt_env_templates)
+        list(map(lambda x: x.pop('updated', None), alt_env_templates))
+        list(map(lambda x: x.pop('created', None), alt_env_templates))
 
         self.assertIn(public_env_template, alt_env_templates)
         self.assertNotIn(private_env_template, alt_env_templates)
