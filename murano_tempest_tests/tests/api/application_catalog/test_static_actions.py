@@ -58,7 +58,7 @@ class TestStaticActions(base.BaseApplicationCatalogTest):
             class_name=self.package['class_definitions'][0],
             method_name='staticAction',
             args={'myName': 'John'})
-        self.assertEqual('"Hello, John"', action_result)
+        self.assertEqual(b'"Hello, John"', action_result)
 
     @decorators.attr(type='smoke')
     @decorators.idempotent_id('8b427735-bb73-41ab-8992-c81b3d8ebc42')
@@ -73,4 +73,4 @@ class TestStaticActions(base.BaseApplicationCatalogTest):
             method_name='staticAction',
             package_name=self.package[name_attr],
             class_version="<1", args={'myName': 'John'})
-        self.assertEqual('"Hello, John"', action_result)
+        self.assertEqual(b'"Hello, John"', action_result)
