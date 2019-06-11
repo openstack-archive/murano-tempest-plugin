@@ -16,10 +16,10 @@ See the Tempest plugin docs for information on using it:
 https://docs.openstack.org/tempest/latest/#using-plugins
 
 * Free software: Apache license
-* Documentation: http://docs.openstack.org/developer/murano-tempest-plugin
+* Documentation: https://docs.openstack.org/murano/latest/
 * Release notes: https://docs.openstack.org/releasenotes/murano/
-* Source: http://opendev.org/openstack/murano-tempest-plugin
-* Bugs: http://bugs.launchpad.net/murano
+* Source: https://opendev.org/openstack/murano-tempest-plugin
+* Bugs: https://bugs.launchpad.net/murano
 
 Running the tests
 -----------------
