@@ -32,20 +32,11 @@ class TestCinderVolumes(base.BaseApplicationCatalogScenarioTest):
         if not CONF.service_available.cinder:
             msg = "Cinder is not available. Skipping volumes tests"
             raise cls.skipException(msg)
-        if (not CONF.volume_feature_enabled.api_v3 and
-                not CONF.volume_feature_enabled.api_v2):
-            msg = ("Neither cinder v2 nor v3 are available. Skipping"
-                   "volumes tests")
-            raise cls.skipException(msg)
 
     @classmethod
     def setup_clients(cls):
         super(TestCinderVolumes, cls).setup_clients()
-        # Prefer volume v3 which is the current version
-        if CONF.volume_feature_enabled.api_v3:
-            _volume = cls.services_manager.volume_v3
-        elif CONF.volume_feature_enabled.api_v2:
-            _volume = cls.services_manager.volume_v2
+        _volume = cls.services_manager.volume_v3
         cls.volumes_client = _volume.VolumesClient()
         cls.backups_client = _volume.BackupsClient()
         cls.snapshots_client = _volume.SnapshotsClient()
