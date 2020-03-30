@@ -99,7 +99,7 @@ class BaseServiceBrokerTest(test.BaseTestCase):
         while start_status:
             status = self.service_broker_client.get_last_status(instance_id)
             if status == start_status and time.time() - start_time > timeout:
-                    raise exceptions.TimeoutException
+                raise exceptions.TimeoutException
             elif status != start_status:
                 try:
                     parced_stat = status['state']
