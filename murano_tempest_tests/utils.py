@@ -13,6 +13,7 @@
 # under the License.
 
 import collections
+from io import BytesIO
 import os
 import shutil
 import tempfile
@@ -23,8 +24,7 @@ import zipfile
 
 from oslo_log import log as logging
 import requests
-import six
-from six.moves import urllib
+import urllib
 
 LOG = logging.getLogger(__name__)
 
@@ -285,7 +285,7 @@ class Package(FileWrapperMixin):
             try:
                 self._file.seek(0)
                 self._zip_obj = zipfile.ZipFile(
-                    six.BytesIO(self._file.read()))
+                    BytesIO(self._file.read()))
             except Exception as e:
                 LOG.error("Error {0} occurred,"
                           " while parsing the package".format(e))
@@ -372,7 +372,7 @@ class Package(FileWrapperMixin):
 
         def transpose_graph(graph):
             transposed = collections.defaultdict(list)
-            for node, deps in six.viewitems(graph):
+            for node, deps in graph.items():
                 for dep in deps:
                     transposed[dep].append(node)
             return transposed
