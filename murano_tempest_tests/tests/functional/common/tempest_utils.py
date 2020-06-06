@@ -12,9 +12,6 @@
 # License for the specific language governing permissions and limitations
 # under the License.
 
-import congressclient.v1.client as cclient
-from keystoneauth1 import identity
-from keystoneauth1 import session as ksasession
 import keystoneclient.v3 as ksclient
 from tempest import config
 
@@ -33,17 +30,3 @@ class TempestDeployTestMixin(common_utils.DeployTestMixin):
                                password=CONF.auth.admin_password,
                                tenant_name=CONF.auth.admin_project_name,
                                auth_url=CONF.identity.uri_v3)
-
-    @staticmethod
-    @common_utils.memoize
-    def congress_client():
-        auth = identity.v3.Password(
-            auth_url=CONF.identity.uri_v3,
-            username=CONF.auth.admin_username,
-            password=CONF.auth.admin_password,
-            project_name=CONF.auth.admin_project_name,
-            user_domain_name=CONF.auth.admin_domain_name,
-            project_domain_name=CONF.auth.admin_domain_name)
-        session = ksasession.Session(auth=auth)
-        return cclient.Client(session=session,
-                              service_type='policy')
