@@ -19,14 +19,17 @@
 - job:
     name: murano-tempest-api-ussuri
     parent: murano-tempest-api
+    nodeset: openstack-single-node-bionic
     override-checkout: stable/ussuri
 
 - job:
     name: murano-tempest-api-train
     parent: murano-tempest-api
+    nodeset: openstack-single-node-bionic
     override-checkout: stable/train
 
 - job:
     name: murano-tempest-api-stein
     parent: murano-tempest-api
+    nodeset: openstack-single-node-bionic
     override-checkout: stable/stein
