@@ -6,17 +6,22 @@
       jobs:
         - murano-tempest-api:
             voting: false
+        - murano-tempest-api-xena:
+            voting: false
         - murano-tempest-api-wallaby:
             voting: false
         - murano-tempest-api-victoria:
             voting: false
         - murano-tempest-api-ussuri:
             voting: false
-        - murano-tempest-api-train:
-            voting: false
         - murano-tempest-cfapi
     gate:
       queue: murano
+
+- job:
+    name: murano-tempest-api-xena
+    parent: murano-tempest-api
+    override-checkout: stable/xena
 
 - job:
     name: murano-tempest-api-wallaby
@@ -33,9 +38,3 @@
     parent: murano-tempest-api
     nodeset: openstack-single-node-bionic
     override-checkout: stable/ussuri
-
-- job:
-    name: murano-tempest-api-train
-    parent: murano-tempest-api
-    nodeset: openstack-single-node-bionic
-    override-checkout: stable/train
