@@ -22,10 +22,10 @@ from tempest.common import credentials_factory as common_creds
 from tempest.common import waiters
 from tempest import config
 from tempest.lib import exceptions
-from tempest.services import orchestration
 from tempest import test
 
 from murano_tempest_tests import clients
+from murano_tempest_tests.services import orchestration
 from murano_tempest_tests import utils
 
 CONF = config.CONF
