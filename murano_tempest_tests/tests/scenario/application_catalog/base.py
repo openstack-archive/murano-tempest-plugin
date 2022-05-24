@@ -25,7 +25,7 @@ from tempest.lib import exceptions
 from tempest import test
 
 from murano_tempest_tests import clients
-from murano_tempest_tests.services import orchestration
+from murano_tempest_tests.services import orchestration_client
 from murano_tempest_tests import utils
 
 CONF = config.CONF
@@ -73,7 +73,7 @@ class BaseApplicationCatalogScenarioTest(test.BaseTestCase):
             params['region'] = CONF.identity.region
         else:
             params['region'] = getattr(options, 'region')
-        cls.orchestration_client = orchestration.OrchestrationClient(
+        cls.orchestration_client = orchestration_client.OrchestrationClient(
             cls.services_manager.auth_provider, **params)
         cls.images_client = cls.services_manager.image_client_v2
 
@@ -415,7 +415,7 @@ class BaseApplicationCatalogScenarioIsolatedAdminTest(
         # NOTE(andreaf) The orchestration client is not initialised in Tempest
         # by default anymore.
         params = config.service_client_config('orchestration')
-        cls.orchestration_client = orchestration.OrchestrationClient(
+        cls.orchestration_client = orchestration_client.OrchestrationClient(
             cls.services_manager.auth_provider, **params)
         cls.snapshots_client = cls.services_manager.snapshots_v2_client
         cls.volumes_client = cls.services_manager.volumes_v2_client
