@@ -12,8 +12,6 @@
             voting: false
         - murano-tempest-api-wallaby:
             voting: false
-        - murano-tempest-api-victoria:
-            voting: false
         - murano-tempest-cfapi
     gate:
       queue: murano
@@ -32,8 +30,3 @@
     name: murano-tempest-api-wallaby
     parent: murano-tempest-api
     override-checkout: stable/wallaby
-
-- job:
-    name: murano-tempest-api-victoria
-    parent: murano-tempest-api
-    override-checkout: stable/victoria
