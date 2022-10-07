@@ -29,10 +29,14 @@ navigate to tempest directory::
 
     $ cd /opt/stack/tempest
 
+Install the murano-tempest-plugin into the tox environment::
+
+    $ tox -e venv-tempest -- pip install (path to the murano-tempest-plugin directory)
+
 Run this command::
 
-    $ tox -e all-plugin -- application_catalog 
+    $ tox -e all -- application_catalog
 
 To run a single test case, run with the test case name, for example::
 
-    $ tox -e all-plugin -- murano_tempest_tests.tests.api.application_catalog.test_categories.TestCategories.test_list_categories
+    $ tox -e all -- murano_tempest_tests.tests.api.application_catalog.test_categories.TestCategories.test_list_categories
