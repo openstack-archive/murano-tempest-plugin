@@ -1,4 +1,5 @@
 - project:
+    queue: murano
     templates:
       - check-requirements
       - tempest-plugin-jobs
@@ -13,20 +14,21 @@
         - murano-tempest-api-wallaby:
             voting: false
         - murano-tempest-cfapi
-    gate:
-      queue: murano
 
 - job:
     name: murano-tempest-api-yoga
     parent: murano-tempest-api
+    nodeset: openstack-single-node-focal
     override-checkout: stable/yoga
 
 - job:
     name: murano-tempest-api-xena
     parent: murano-tempest-api
+    nodeset: openstack-single-node-focal
     override-checkout: stable/xena
 
 - job:
     name: murano-tempest-api-wallaby
     parent: murano-tempest-api
+    nodeset: openstack-single-node-focal
     override-checkout: stable/wallaby
