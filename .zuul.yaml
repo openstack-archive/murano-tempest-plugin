@@ -13,8 +13,6 @@
             voting: false
         - murano-tempest-api-xena:
             voting: false
-        - murano-tempest-api-wallaby:
-            voting: false
         - murano-tempest-cfapi
 
 - job:
@@ -34,9 +32,3 @@
     parent: murano-tempest-api
     nodeset: openstack-single-node-focal
     override-checkout: stable/xena
-
-- job:
-    name: murano-tempest-api-wallaby
-    parent: murano-tempest-api
-    nodeset: openstack-single-node-focal
-    override-checkout: stable/wallaby
