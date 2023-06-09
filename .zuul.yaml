@@ -7,6 +7,8 @@
       jobs:
         - murano-tempest-api:
             voting: false
+        - murano-tempest-api-2023-1:
+            voting: false
         - murano-tempest-api-zed:
             voting: false
         - murano-tempest-api-yoga:
@@ -14,6 +16,12 @@
         - murano-tempest-api-xena:
             voting: false
         - murano-tempest-cfapi
+
+- job:
+    name: murano-tempest-api-2023-1
+    parent: murano-tempest-api
+    nodeset: openstack-single-node-jammy
+    override-checkout: stable/2023.1
 
 - job:
     name: murano-tempest-api-zed
