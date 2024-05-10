@@ -1,6 +1,0 @@
-[run]
-branch = True
-source = murano_tempest_tests
-
-[report]
-ignore_errors = True
